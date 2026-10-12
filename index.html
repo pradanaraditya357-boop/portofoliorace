@@ -3,22 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio - Dark Edition</title>
+  <title>Portofolio - Raditya Alfarezel Pradana</title>
   
-  <!-- Hubungkan ke CSS lokal hasil kompilasi Tailwind -->
   <link rel="stylesheet" href="./output.css">
 
   <style>
-    @keyframes analogHorror {
-      0%, 100% { opacity: 0.9; text-shadow: 2px 0 0 rgba(239, 68, 68, 0.7), -2px 0 0 rgba(59, 130, 246, 0.7); }
-      30% { opacity: 0.3; text-shadow: -4px 0 0 rgba(239, 68, 68, 0.9), 4px 0 0 rgba(59, 130, 246, 0.9); transform: skewX(-5deg); }
-      33% { opacity: 1; text-shadow: 0 0 10px rgba(59, 130, 246, 0.9); transform: skewX(0deg); }
-      70% { opacity: 0.6; text-shadow: 3px 2px 0 rgba(239, 68, 68, 0.8); }
-      85% { opacity: 0.2; text-shadow: none; }
-    }
-    .animate-horror-glitch {
-      animation: analogHorror 4s steps(20, end) infinite;
-    }
+    /* Animation overlay CRT */
     .crt-overlay {
       background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
       background-size: 100% 4px;
@@ -34,21 +24,45 @@
       transform: translateY(-8px) rotateX(4deg) rotateY(-3deg) scale(1.02);
       box-shadow: 0 20px 30px -10px rgba(59, 130, 246, 0.3);
     }
+
+    /* Cursor Kertas Ketik */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+      color: #60a5fa;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 transition-colors duration-300 relative">
 
   <div class="absolute inset-0 crt-overlay pointer-events-none z-40 opacity-40"></div>
 
-  <!-- Header / Navbar -->
-  <header class="fixed top-0 left-0 right-0 bg-slate-950/90 backdrop-blur-md shadow-lg border-b border-slate-800/80 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+  <!-- Header / Navbar Responsif HP & Laptop -->
+  <header class="fixed top-0 left-0 right-0 bg-slate-950/95 backdrop-blur-md shadow-lg border-b border-slate-800/80 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center relative">
       <div class="text-xl font-bold text-blue-500 tracking-wider font-mono">MyPortfolio</div>
-      <nav class="flex items-center gap-6">
-        <a href="#about" class="hover:text-blue-400 font-medium transition">Tentang</a>
-        <a href="#projects" class="hover:text-blue-400 font-medium transition">Proyek</a>
-        <a href="#socials" class="hover:text-blue-400 font-medium transition">Media Sosial</a>
-        <a href="#contact" class="hover:text-blue-400 font-medium transition">Kontak</a>
+      
+      <!-- Tombol Hamburger untuk Tampilan HP -->
+      <button id="menu-btn" aria-label="Toggle Menu" class="md:hidden text-slate-300 hover:text-blue-400 focus:outline-none p-2 rounded-lg border border-slate-800 bg-slate-900">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Navigasi Menu -->
+      <nav id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-slate-950/95 border-b border-slate-800 p-6 flex-col gap-4 shadow-2xl md:static md:flex md:flex-row md:items-center md:gap-6 md:p-0 md:bg-transparent md:border-none md:shadow-none">
+        <a href="#about" class="mobile-link hover:text-blue-400 font-medium transition py-1 border-b border-slate-800/50 md:border-none">Tentang</a>
+        <a href="#projects" class="mobile-link hover:text-blue-400 font-medium transition py-1 border-b border-slate-800/50 md:border-none">Proyek</a>
+        <a href="#socials" class="mobile-link hover:text-blue-400 font-medium transition py-1 border-b border-slate-800/50 md:border-none">Media Sosial</a>
+        <a href="#contact" class="mobile-link hover:text-blue-400 font-medium transition py-1 md:border-none">Kontak</a>
       </nav>
     </div>
   </header>
@@ -61,12 +75,10 @@
         <img src="profil.jpg" alt="Foto Profil" class="relative w-36 h-48 md:w-44 md:h-60 rounded-2xl object-cover border-2 border-slate-700 shadow-2xl transition-transform duration-300 group-hover:scale-105 filter grayscale contrast-125 hover:grayscale-0" />
       </div>
       <div class="text-center md:text-left">
-        <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide font-mono">
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide font-mono min-h-[110px] md:min-h-[140px] flex flex-col justify-center">
           <span class="text-slate-400 text-xl block mb-1">Welcome</span>
           Halo, Saya <br class="hidden md:block"/>
-          <span class="inline-block text-blue-400 font-black animate-horror-glitch mt-2">
-            Raditya Alfarezel Pradana
-          </span>
+          <span id="typed-text" class="inline-block text-blue-400 font-black mt-2 typing-cursor"></span>
         </h1>
       </div>
     </div>
@@ -89,7 +101,6 @@
         <p>Bagi saya, pengembangan web adalah seni memecahkan masalah kompleks dan mengoptimalkan kenyamanan pengguna (User Experience) dari struktur tata letak hingga kecepatan muat halaman.</p>
       </div>
 
-      <!-- Highlight Ringkasan Keahlian -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 text-center perspective-1000">
         <div class="card-3d p-4 bg-slate-900 rounded-xl border border-slate-800 shadow-lg cursor-pointer">
           <div class="text-2xl mb-1">💻</div>
@@ -119,7 +130,6 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 perspective-1000">
       
-      <!-- Kartu 1: Landing Page UMKM -->
       <div class="card-3d bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-800 flex flex-col justify-between">
         <div>
           <div class="text-4xl mb-4">🛍️</div>
@@ -135,7 +145,6 @@
         </div>
       </div>
       
-      <!-- Kartu 2: Aplikasi To-Do List & Snippet JS -->
       <div class="card-3d bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-800 flex flex-col justify-between">
         <div>
           <div class="text-4xl mb-4">✅</div>
@@ -158,7 +167,7 @@ function addTodo(taskText) {
     </div>
   </section>
 
-  <!-- Social Media Section (Link Instagram & TikTok Terbaru) -->
+  <!-- Social Media Section -->
   <section id="socials" class="py-20 max-w-4xl mx-auto px-6">
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold mb-3 font-mono">Media Sosial</h2>
@@ -166,7 +175,6 @@ function addTodo(taskText) {
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 perspective-1000">
       
-      <!-- Instagram Link Terbaru -->
       <a href="https://www.instagram.com/radit135c?psln=MTNlY2NseTBpZmg1Zg==" target="_blank" class="card-3d bg-slate-900 p-6 rounded-xl border border-slate-800 flex items-center gap-4 hover:border-pink-500/50 transition group">
         <div class="w-12 h-12 rounded-full bg-pink-600/20 flex items-center justify-center text-pink-500 text-2xl">📸</div>
         <div>
@@ -175,7 +183,6 @@ function addTodo(taskText) {
         </div>
       </a>
 
-      <!-- TikTok Link Terbaru -->
       <a href="https://www.tiktok.com/@radityaa_135?_r=1&_t=ZS-9AUlLaUWyCG" target="_blank" class="card-3d bg-slate-900 p-6 rounded-xl border border-slate-800 flex items-center gap-4 hover:border-cyan-500/50 transition group">
         <div class="w-12 h-12 rounded-full bg-cyan-600/20 flex items-center justify-center text-cyan-400 text-2xl">🎬</div>
         <div>
@@ -184,7 +191,6 @@ function addTodo(taskText) {
         </div>
       </a>
 
-      <!-- WhatsApp Link -->
       <a href="https://wa.me/6285855265944" target="_blank" class="card-3d bg-slate-900 p-6 rounded-xl border border-slate-800 flex items-center gap-4 hover:border-emerald-500/50 transition group">
         <div class="w-12 h-12 rounded-full bg-emerald-600/20 flex items-center justify-center text-emerald-400 text-2xl">📞</div>
         <div>
@@ -221,10 +227,63 @@ function addTodo(taskText) {
   </section>
 
   <footer class="py-8 text-center text-sm text-slate-500 border-t border-slate-800 font-mono">
-    <p>&copy; 2026 Nama Anda. Dibuat dengan Tailwind CSS.</p>
+    <p>&copy; 2026 Raditya Alfarezel Pradana. Dibuat dengan Tailwind CSS.</p>
   </footer>
 
   <script>
+    // Logic Animasi Ketik (Typewriter Effect)
+    const textToType = "Raditya Alfarezel Pradana";
+    const typedTextElement = document.getElementById("typed-text");
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentText = textToType.substring(0, charIndex);
+      typedTextElement.textContent = currentText;
+
+      let typeSpeed = isDeleting ? 60 : 110; // Kecepatan standar (tidak terlalu cepat & tidak terlalu lambat)
+
+      if (!isDeleting && charIndex < textToType.length) {
+        charIndex++;
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+      } else {
+        isDeleting = !isDeleting;
+        typeSpeed = isDeleting ? 1800 : 800; // Jeda saat teks selesai diketik atau selesai dihapus
+      }
+
+      setTimeout(typeEffect, typeSpeed);
+    }
+
+    // Jalankan animasi setelah halaman dimuat
+    document.addEventListener("DOMContentLoaded", typeEffect);
+
+    // Logic untuk Toggle Mobile Menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        }
+      });
+    });
+
+    // Snippets JS Logic
     const jsSnippets = {
       todo: `const todos = [];\nfunction addTodo(taskText) {\n  todos.push({ text: taskText, done: false });\n}`,
       theme: `function toggleTheme() {\n  document.documentElement.classList.toggle('dark');\n}`,
